@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 
 type NavLink = {
   label: string;
@@ -26,13 +26,26 @@ const productLinks: NavLink[] = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [sessionUser, setSessionUser] = useState<{ email: string; name: string } | null>(null);
+
+  const refreshSession = useCallback(async () => {
+    try {
+      const res = await fetch("/api/auth/session");
+      const data = (await res.json()) as { user: { email: string; name: string } | null };
+      setSessionUser(data.user);
+    } catch {
+      setSessionUser(null);
+    }
+  }, []);
 
   useEffect(() => {
+    void refreshSession();
     setIsOpen(false);
     setProductsOpen(false);
-  }, [pathname]);
+  }, [pathname, refreshSession]);
 
   useEffect(() => {
     if (typeof document === "undefined") return;
@@ -47,6 +60,14 @@ export default function Navbar() {
     if (href.startsWith("/#")) return false;
     return pathname === href || pathname.startsWith(`${href}/`);
   };
+
+  async function handleSignOut() {
+    await fetch("/api/auth/logout", { method: "POST" });
+    setSessionUser(null);
+    router.refresh();
+    router.push("/");
+    setIsOpen(false);
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-lg">
@@ -113,12 +134,25 @@ export default function Navbar() {
         </div>
 
         <div className="hidden items-center gap-2 md:flex">
-          <Link href="/login" className="btn-secondary">
-            Login
-          </Link>
-          <Link href="/signup" className="btn-primary">
-            Sign up
-          </Link>
+          {sessionUser ? (
+            <>
+              <span className="max-w-[160px] truncate text-xs text-slate-300" title={sessionUser.email}>
+                {sessionUser.email}
+              </span>
+              <button type="button" className="btn-secondary" onClick={() => void handleSignOut()}>
+                Sign out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link href="/login" className="btn-secondary">
+                Login
+              </Link>
+              <Link href="/signup" className="btn-primary">
+                Sign up
+              </Link>
+            </>
+          )}
         </div>
 
         <button
@@ -190,13 +224,24 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-            <div className="mt-3 grid grid-cols-2 gap-2 border-t border-white/10 pt-3">
-              <Link href="/login" className="btn-secondary w-full">
-                Login
-              </Link>
-              <Link href="/signup" className="btn-primary w-full">
-                Sign up
-              </Link>
+            <div className="mt-3 space-y-2 border-t border-white/10 pt-3">
+              {sessionUser ? (
+                <>
+                  <p className="px-3 text-xs text-slate-400">Signed in as {sessionUser.email}</p>
+                  <button type="button" className="btn-secondary w-full" onClick={() => void handleSignOut()}>
+                    Sign out
+                  </button>
+                </>
+              ) : (
+                <div className="grid grid-cols-2 gap-2">
+                  <Link href="/login" className="btn-secondary w-full">
+                    Login
+                  </Link>
+                  <Link href="/signup" className="btn-primary w-full">
+                    Sign up
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

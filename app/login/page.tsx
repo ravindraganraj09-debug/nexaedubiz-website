@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import SmartLink from "@/components/SmartLink";
-import { MAILTO_SUPPORT } from "@/lib/site-emails";
+import LoginForm from "@/components/LoginForm";
 
 export const metadata: Metadata = {
   title: "Login - NexaEduBiz",
@@ -23,40 +22,7 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <form className="mt-8 space-y-4">
-            <label className="block text-sm text-slate-200">
-              Email
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="you@example.com"
-                className="mt-2 w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none ring-cyan-300/40 transition focus:ring"
-              />
-            </label>
-            <label className="block text-sm text-slate-200">
-              Password
-              <input
-                type="password"
-                name="password"
-                required
-                placeholder="********"
-                className="mt-2 w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none ring-cyan-300/40 transition focus:ring"
-              />
-            </label>
-            <div className="flex items-center justify-between text-xs text-slate-300">
-              <label className="flex items-center gap-2">
-                <input type="checkbox" className="h-3.5 w-3.5 rounded border-white/20 bg-white/5" />
-                Remember me
-              </label>
-              <SmartLink href={MAILTO_SUPPORT} className="text-cyan-300 hover:text-cyan-200">
-                Forgot password?
-              </SmartLink>
-            </div>
-            <button type="submit" className="btn-primary w-full">
-              Sign In
-            </button>
-          </form>
+          <LoginForm />
 
           <div className="my-6 flex items-center gap-3 text-xs uppercase tracking-widest text-slate-400">
             <span className="h-px flex-1 bg-white/10" />
@@ -69,9 +35,6 @@ export default function LoginPage() {
             <Link href="/signup" className="font-semibold text-cyan-300 hover:text-cyan-200">
               Create an account
             </Link>
-          </p>
-          <p className="mt-3 text-center text-xs text-slate-400">
-            Authentication can be wired with NextAuth, Clerk, Firebase, or a custom backend.
           </p>
         </div>
       </section>
