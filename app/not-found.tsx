@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EmailLinks from "@/components/EmailLinks";
 
 export default function NotFound() {
   return (
@@ -25,6 +26,14 @@ export default function NotFound() {
             <Link href="/contact" className="btn-secondary">
               Contact Support
             </Link>
+          </div>
+          <div className="mx-auto mt-8 max-w-md">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+              Email us
+            </p>
+            <div className="mt-2 flex justify-center">
+              <EmailLinks className="text-center" />
+            </div>
           </div>
         </div>
       </section>

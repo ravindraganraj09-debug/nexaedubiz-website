@@ -1,4 +1,7 @@
 import Link from "next/link";
+import EmailLinks from "@/components/EmailLinks";
+import SmartLink from "@/components/SmartLink";
+import { MAILTO_SUPPORT } from "@/lib/site-emails";
 
 const productLinks = [
   { label: "ReplyPilot AI", href: "/replypilot" },
@@ -13,7 +16,7 @@ const companyLinks = [
   { label: "Sign up", href: "/signup" },
   { label: "Login", href: "/login" },
   { label: "Contact", href: "/contact" },
-  { label: "Support", href: "/contact" }
+  { label: "Support", href: MAILTO_SUPPORT }
 ];
 
 const legalLinks = [
@@ -38,6 +41,9 @@ export default function Footer() {
               AI tools for business, education, and creativity. Build smarter workflows with one
               unified platform.
             </p>
+            <div className="mt-4">
+              <EmailLinks layout="stack" />
+            </div>
           </div>
 
           <div>
@@ -58,9 +64,9 @@ export default function Footer() {
             <ul className="mt-3 space-y-2 text-sm text-slate-300">
               {companyLinks.map((link) => (
                 <li key={`${link.label}-${link.href}`}>
-                  <Link href={link.href} className="transition hover:text-white">
+                  <SmartLink href={link.href} className="transition hover:text-white">
                     {link.label}
-                  </Link>
+                  </SmartLink>
                 </li>
               ))}
             </ul>

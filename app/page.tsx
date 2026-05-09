@@ -1,10 +1,13 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import CTASection from "@/components/CTASection";
 import ContactForm from "@/components/ContactForm";
 import FAQItem from "@/components/FAQItem";
 import PricingCard from "@/components/PricingCard";
 import ProductCard, { ProductButton } from "@/components/ProductCard";
 import SmartLink from "@/components/SmartLink";
+import EmailLinks from "@/components/EmailLinks";
+import { HELLO_EMAIL, MAILTO_HELLO, MAILTO_SUPPORT, SUPPORT_EMAIL } from "@/lib/site-emails";
 
 const REPLYPILOT_APP_URL = "https://ai-auto-reply-tool.vercel.app";
 const TALKENTIA_PLAY_STORE_URL =
@@ -108,7 +111,7 @@ const pricing = [
   }
 ];
 
-const faqs = [
+const faqs: { question: string; answer: ReactNode }[] = [
   {
     question: "What is NexaEduBiz?",
     answer:
@@ -136,7 +139,25 @@ const faqs = [
   },
   {
     question: "Can I contact support?",
-    answer: "Absolutely. Use the contact form below and our team will respond with product and plan guidance."
+    answer: (
+      <>
+        Yes. Use the contact form on this page, email{" "}
+        <a
+          href={MAILTO_SUPPORT}
+          className="font-medium text-cyan-200 underline decoration-cyan-500/40 underline-offset-2 hover:text-cyan-100"
+        >
+          {SUPPORT_EMAIL}
+        </a>{" "}
+        for product and account help, or{" "}
+        <a
+          href={MAILTO_HELLO}
+          className="font-medium text-cyan-200 underline decoration-cyan-500/40 underline-offset-2 hover:text-cyan-100"
+        >
+          {HELLO_EMAIL}
+        </a>{" "}
+        for sales and partnerships.
+      </>
+    )
   }
 ];
 
@@ -372,6 +393,12 @@ export default function HomePage() {
 
       <section id="contact" className="section-wrapper pt-6">
         <h2 className="text-3xl font-bold text-white">Contact Us</h2>
+        <p className="mt-2 max-w-2xl text-sm text-slate-300">
+          Send a message with the form, or email us directly using the addresses below.
+        </p>
+        <div className="mt-3">
+          <EmailLinks />
+        </div>
         <div className="glass-card mt-6 p-6">
           <ContactForm className="grid gap-4 md:grid-cols-2" />
         </div>

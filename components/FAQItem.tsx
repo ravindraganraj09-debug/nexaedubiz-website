@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+
 type FAQItemProps = {
   question: string;
-  answer: string;
+  answer: ReactNode;
 };
 
 export default function FAQItem({ question, answer }: FAQItemProps) {
@@ -12,7 +14,7 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
           <span className="text-cyan-300 transition group-open:rotate-45">+</span>
         </span>
       </summary>
-      <p className="mt-3 text-sm leading-relaxed text-slate-300">{answer}</p>
+      <div className="mt-3 text-sm leading-relaxed text-slate-300">{answer}</div>
     </details>
   );
 }

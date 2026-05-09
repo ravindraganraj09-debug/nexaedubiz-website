@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import EmailLinks from "@/components/EmailLinks";
 
 type ContactFormProps = {
   className?: string;
@@ -66,6 +67,14 @@ export default function ContactForm({ className = "" }: ContactFormProps) {
 
   return (
     <form className={className} onSubmit={handleSubmit}>
+      <div className="md:col-span-2 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+          Reach us directly
+        </p>
+        <div className="mt-2">
+          <EmailLinks layout="stack" />
+        </div>
+      </div>
       <label className="text-sm text-slate-200">
         Name
         <input type="text" name="name" required className={inputClassName} />

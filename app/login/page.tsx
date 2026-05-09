@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SmartLink from "@/components/SmartLink";
+import { MAILTO_SUPPORT } from "@/lib/site-emails";
 
 export const metadata: Metadata = {
   title: "Login - NexaEduBiz",
@@ -47,9 +49,9 @@ export default function LoginPage() {
                 <input type="checkbox" className="h-3.5 w-3.5 rounded border-white/20 bg-white/5" />
                 Remember me
               </label>
-              <Link href="/contact" className="text-cyan-300 hover:text-cyan-200">
+              <SmartLink href={MAILTO_SUPPORT} className="text-cyan-300 hover:text-cyan-200">
                 Forgot password?
-              </Link>
+              </SmartLink>
             </div>
             <button type="submit" className="btn-primary w-full">
               Sign In

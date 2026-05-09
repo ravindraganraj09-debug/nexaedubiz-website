@@ -13,14 +13,16 @@ export default function SmartLink({
   className,
   ...rest
 }: SmartLinkProps) {
-  const isExternal = /^https?:\/\//i.test(href);
+  const isMailto = /^mailto:/i.test(href);
+  const isHttp = /^https?:\/\//i.test(href);
 
-  if (isExternal) {
+  if (isMailto || isHttp) {
     return (
       <a
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        {...(isHttp
+          ? { target: "_blank", rel: "noopener noreferrer" as const }
+          : { rel: "noopener noreferrer" as const })}
         className={className}
         {...rest}
       >

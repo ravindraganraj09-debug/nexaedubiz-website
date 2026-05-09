@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import FAQItem from "@/components/FAQItem";
 import PricingCard from "@/components/PricingCard";
+import EmailLinks from "@/components/EmailLinks";
+import { HELLO_EMAIL, MAILTO_HELLO, MAILTO_SUPPORT, SUPPORT_EMAIL } from "@/lib/site-emails";
 
 export const metadata: Metadata = {
   title: "Pricing - NexaEduBiz AI Plans",
@@ -50,11 +53,21 @@ const pricing = [
   }
 ];
 
-const faqs = [
+const faqLink =
+  "font-medium text-cyan-200 underline decoration-cyan-500/40 underline-offset-2 hover:text-cyan-100";
+
+const faqs: { question: string; answer: ReactNode }[] = [
   {
     question: "Can I switch plans later?",
-    answer:
-      "Yes. Upgrade or downgrade your plan anytime from your account or by contacting our team."
+    answer: (
+      <>
+        Yes. Upgrade or downgrade your plan anytime from your account or email{" "}
+        <a href={MAILTO_SUPPORT} className={faqLink}>
+          {SUPPORT_EMAIL}
+        </a>{" "}
+        for help.
+      </>
+    )
   },
   {
     question: "Is there a free trial for paid plans?",
@@ -68,8 +81,16 @@ const faqs = [
   },
   {
     question: "Do you offer custom enterprise pricing?",
-    answer:
-      "Yes, we offer custom plans for teams and businesses with higher usage or integration needs. Use the contact form to talk to sales."
+    answer: (
+      <>
+        Yes, we offer custom plans for teams and businesses with higher usage or integration needs.
+        Use the contact form or email{" "}
+        <a href={MAILTO_HELLO} className={faqLink}>
+          {HELLO_EMAIL}
+        </a>{" "}
+        to talk to sales.
+      </>
+    )
   },
   {
     question: "How do I pay?",
@@ -100,6 +121,9 @@ export default function PricingPage() {
             <Link href="/#products" className="btn-secondary">
               Explore Products
             </Link>
+          </div>
+          <div className="mt-5">
+            <EmailLinks />
           </div>
         </div>
       </section>

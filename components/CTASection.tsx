@@ -1,3 +1,4 @@
+import EmailLinks from "@/components/EmailLinks";
 import SmartLink from "@/components/SmartLink";
 
 type CTASectionProps = {
@@ -31,6 +32,14 @@ export default function CTASection({
               {secondaryLabel}
             </SmartLink>
           ) : null}
+        </div>
+        <div className="mx-auto mt-8 max-w-xl border-t border-white/10 pt-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+            Prefer email?
+          </p>
+          <div className="mt-3 flex justify-center">
+            <EmailLinks className="text-center" />
+          </div>
         </div>
       </div>
     </section>

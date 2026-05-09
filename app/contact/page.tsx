@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import { HELLO_EMAIL, MAILTO_HELLO, MAILTO_SUPPORT, SUPPORT_EMAIL } from "@/lib/site-emails";
 
 export const metadata: Metadata = {
   title: "Contact NexaEduBiz - AI SaaS Sales & Support",
@@ -7,18 +8,29 @@ export const metadata: Metadata = {
     "Get in touch with NexaEduBiz for product demos, sales, support, or partnership opportunities across our AI products."
 };
 
-const infoCards = [
+const linkClass =
+  "mt-3 inline-block text-sm font-semibold text-cyan-200 underline decoration-cyan-500/40 underline-offset-2 transition hover:text-cyan-100";
+
+const infoCards: {
+  icon: string;
+  title: string;
+  description: string;
+  value: string;
+  mailto?: string;
+}[] = [
   {
     icon: "📧",
     title: "Email Us",
     description: "General queries, sales, and partnerships",
-    value: "hello@nexaedubiz.com"
+    mailto: MAILTO_HELLO,
+    value: HELLO_EMAIL
   },
   {
     icon: "🛠️",
     title: "Product Support",
     description: "Help with ReplyPilot, Talkentia, AskBuddy",
-    value: "support@nexaedubiz.com"
+    mailto: MAILTO_SUPPORT,
+    value: SUPPORT_EMAIL
   },
   {
     icon: "🚀",
@@ -41,7 +53,15 @@ export default function ContactPage() {
           </h1>
           <p className="mt-4 text-base text-slate-300 sm:text-lg">
             Tell us which product you&apos;re interested in and our team will get back to you
-            within one business day.
+            within one business day. You can also email{" "}
+            <a href={MAILTO_HELLO} className="text-cyan-200 underline hover:text-cyan-100">
+              {HELLO_EMAIL}
+            </a>{" "}
+            (business) or{" "}
+            <a href={MAILTO_SUPPORT} className="text-cyan-200 underline hover:text-cyan-100">
+              {SUPPORT_EMAIL}
+            </a>{" "}
+            (support).
           </p>
         </div>
       </section>
@@ -55,7 +75,13 @@ export default function ContactPage() {
               </span>
               <h3 className="mt-4 text-lg font-semibold text-white">{card.title}</h3>
               <p className="mt-2 text-sm text-slate-300">{card.description}</p>
-              <p className="mt-3 text-sm font-semibold text-cyan-200">{card.value}</p>
+              {card.mailto ? (
+                <a href={card.mailto} className={linkClass}>
+                  {card.value}
+                </a>
+              ) : (
+                <p className="mt-3 text-sm font-semibold text-cyan-200">{card.value}</p>
+              )}
             </div>
           ))}
         </div>
