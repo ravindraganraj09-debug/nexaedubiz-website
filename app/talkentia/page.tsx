@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AssistantPortrait } from "@/components/AIAssistantHero";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import TalkentiaMockup from "@/components/mockups/TalkentiaMockup";
 
@@ -92,7 +93,22 @@ export default function TalkentiaPage() {
       ctaSubtitle="Talkentia AI is available on Google Play. Install the app or pick a plan on the web."
       ctaPrimary={{ label: "Open on Google Play", href: TALKENTIA_PLAY_STORE_URL }}
       ctaSecondary={{ label: "View Plans", href: "/pricing" }}
-      mockup={<TalkentiaMockup />}
+      mockup={
+        <AssistantPortrait
+          characterImage="/characters/talkentia.png"
+          characterAlt="Mia, the Talkentia AI English speaking tutor"
+          characterName="Mia"
+          characterRole="Talkentia AI · Speaking Tutor"
+          accent="violet"
+          floatingCards={[
+            { text: "B2 · Fluent", icon: "🎙️", position: "top-left" },
+            { text: "+12 day streak", icon: "🔥", position: "bottom-right" }
+          ]}
+        />
+      }
+      dashboardPreview={<TalkentiaMockup />}
+      dashboardTitle="Talkentia AI app preview"
+      dashboardDescription="Voice-first speaking practice with live grammar tips and an animated waveform UI."
     />
   );
 }

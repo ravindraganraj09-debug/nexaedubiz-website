@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AssistantPortrait } from "@/components/AIAssistantHero";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import MovixaMockup from "@/components/mockups/MovixaMockup";
 
@@ -88,7 +89,22 @@ export default function MovixaPage() {
       ctaSubtitle="We're rolling out early access soon. Join the waitlist and we'll notify you when it goes live."
       ctaPrimary={{ label: "Join Waitlist", href: "/contact" }}
       ctaSecondary={{ label: "View Other Products", href: "/#products" }}
-      mockup={<MovixaMockup />}
+      mockup={
+        <AssistantPortrait
+          characterImage="/characters/movixa.png"
+          characterAlt="Nova, the Movixa AI Studio creative director"
+          characterName="Nova"
+          characterRole="Movixa AI · Creative Director"
+          accent="amber"
+          floatingCards={[
+            { text: "Generating · 4K", icon: "🎬", position: "top-left" },
+            { text: "Brand-locked", icon: "🎨", position: "bottom-right" }
+          ]}
+        />
+      }
+      dashboardPreview={<MovixaMockup />}
+      dashboardTitle="Movixa AI Studio preview"
+      dashboardDescription="A glimpse of the upcoming creator workspace — prompt-to-video, brand kits and color tools."
     />
   );
 }

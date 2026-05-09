@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import AIAssistantHero from "@/components/AIAssistantHero";
+import AssistantLineup from "@/components/AssistantLineup";
 import CTASection from "@/components/CTASection";
 import ContactForm from "@/components/ContactForm";
 import DemoVideoCard from "@/components/DemoVideoCard";
@@ -329,198 +331,251 @@ export default function HomePage() {
         </div>
       </MotionSection>
 
+      {/* MEET THE AI ASSISTANTS */}
+      <MotionSection className="relative section-wrapper pt-12">
+        <GradientOrbs />
+        <SectionHeader
+          align="center"
+          eyebrow="Meet your AI assistants"
+          title="Four premium AI minds. One ecosystem."
+          description="Aria, Mia, Eva and Nova — each crafted for a different superpower across business, learning and creativity."
+          className="!mx-auto mb-12"
+        />
+        <AssistantLineup />
+      </MotionSection>
+
       {/* REPLYPILOT FEATURE */}
       <MotionSection className="relative section-wrapper pt-6">
         <GradientOrbs />
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <div className="badge-gradient">Featured · Live now</div>
-            <h2 className="mt-4 font-display text-4xl font-bold text-white sm:text-5xl">
-              Automate customer replies with{" "}
-              <span className="gradient-text">ReplyPilot AI</span>
-            </h2>
-            <p className="mt-4 max-w-xl text-base text-slate-300">
-              ReplyPilot AI handles incoming customer messages 24/7, captures leads automatically,
-              and gives your team a beautiful dashboard for response analytics.
-            </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              {[
-                "AI auto replies",
-                "Lead capture",
-                "Smart suggestions",
-                "Multi-channel ready",
-                "Brand voice training",
-                "Real-time analytics"
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2 text-sm text-slate-200">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400/30 to-blue-500/30 text-cyan-200">
-                    ✓
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <SmartLink href={REPLYPILOT_APP_URL} className="btn-primary">
-                Start Free
-                <span aria-hidden>→</span>
-              </SmartLink>
-              <Link href="#demo" className="btn-secondary">
-                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-cyan-400/20 text-cyan-200">
-                  ▶
-                </span>
-                Watch Demo
-              </Link>
-              <Link href="/replypilot" className="btn-ghost">
-                Learn More →
-              </Link>
-            </div>
+        <div className="mb-10 max-w-3xl">
+          <div className="badge-gradient">Featured · Live now</div>
+          <h2 className="mt-4 font-display text-4xl font-bold text-white sm:text-5xl">
+            Meet{" "}
+            <span className="gradient-text">Aria</span>
+            {" "}— your AI customer assistant
+          </h2>
+          <p className="mt-4 text-base text-slate-300">
+            ReplyPilot AI handles incoming customer messages 24/7, captures leads automatically,
+            and gives your team a beautiful dashboard for response analytics.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <SmartLink href={REPLYPILOT_APP_URL} className="btn-primary">
+              Start Free
+              <span aria-hidden>→</span>
+            </SmartLink>
+            <Link href="#demo" className="btn-secondary">
+              <span className="flex h-4 w-4 items-center justify-center rounded-full bg-cyan-400/20 text-cyan-200">
+                ▶
+              </span>
+              Watch Demo
+            </Link>
+            <Link href="/replypilot" className="btn-ghost">
+              Learn More →
+            </Link>
           </div>
-          <MotionDiv delay={0.15}>
-            <ReplyPilotMockup />
-          </MotionDiv>
         </div>
+        <AIAssistantHero
+          characterImage="/characters/replypilot.png"
+          characterAlt="Aria, the ReplyPilot AI customer support assistant"
+          characterName="Aria"
+          characterRole="ReplyPilot AI · Customer Assistant"
+          accent="cyan"
+          characterSide="left"
+          mockup={<ReplyPilotMockup />}
+          floatingCards={[
+            { text: "AI replied · 2.4s", icon: "💬", position: "top-right" },
+            { text: "Lead captured", icon: "🎯", position: "bottom-left" }
+          ]}
+        />
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            "AI auto replies",
+            "Lead capture",
+            "Smart suggestions",
+            "Multi-channel ready",
+            "Brand voice training",
+            "Real-time analytics"
+          ].map((item) => (
+            <li key={item} className="flex items-center gap-2 text-sm text-slate-200">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400/30 to-blue-500/30 text-cyan-200">
+                ✓
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </MotionSection>
 
       {/* TALKENTIA FEATURE */}
       <MotionSection className="relative section-wrapper pt-6">
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
-          <MotionDiv className="order-2 lg:order-1">
-            <TalkentiaMockup />
-          </MotionDiv>
-          <div className="order-1 lg:order-2">
-            <div className="badge-gradient">App Available · Mobile-first</div>
-            <h2 className="mt-4 font-display text-4xl font-bold text-white sm:text-5xl">
-              Speak English fluently with{" "}
-              <span className="gradient-text">Talkentia AI</span>
-            </h2>
-            <p className="mt-4 max-w-xl text-base text-slate-300">
-              A patient AI tutor in your pocket. Practice real conversations, get instant grammar
-              tips, and build interview-ready confidence with voice-first speaking sessions.
-            </p>
-            <ul className="mt-6 space-y-2 text-sm text-slate-200">
-              {[
-                "Real-time AI voice conversations",
-                "Live grammar & pronunciation feedback",
-                "Topic packs: interviews, travel, work, exams",
-                "Track speaking streak & fluency level"
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-violet-500/20 text-violet-200">
-                    ✓
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <SmartLink href={TALKENTIA_PLAY_STORE_URL} className="btn-primary">
-                Get on Google Play
-                <span aria-hidden>→</span>
-              </SmartLink>
-              <Link href="/talkentia" className="btn-secondary">
-                Learn More
-              </Link>
-            </div>
+        <div className="mb-10 max-w-3xl">
+          <div className="badge-gradient">App Available · Mobile-first</div>
+          <h2 className="mt-4 font-display text-4xl font-bold text-white sm:text-5xl">
+            Meet{" "}
+            <span className="bg-gradient-to-r from-violet-200 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">
+              Mia
+            </span>
+            {" "}— your AI English tutor
+          </h2>
+          <p className="mt-4 text-base text-slate-300">
+            A patient AI tutor in your pocket. Practice real conversations, get instant grammar
+            tips, and build interview-ready confidence with voice-first speaking sessions.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <SmartLink href={TALKENTIA_PLAY_STORE_URL} className="btn-primary">
+              Get on Google Play
+              <span aria-hidden>→</span>
+            </SmartLink>
+            <Link href="/talkentia" className="btn-secondary">
+              Learn More
+            </Link>
           </div>
         </div>
+        <AIAssistantHero
+          characterImage="/characters/talkentia.png"
+          characterAlt="Mia, the Talkentia AI English speaking tutor"
+          characterName="Mia"
+          characterRole="Talkentia AI · Speaking Tutor"
+          accent="violet"
+          characterSide="right"
+          mockup={<TalkentiaMockup />}
+          floatingCards={[
+            { text: "B2 · Fluent", icon: "🎙️", position: "top-left" },
+            { text: "+12 day streak", icon: "🔥", position: "bottom-right" }
+          ]}
+        />
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            "Real-time AI voice",
+            "Grammar correction",
+            "Interview & travel packs",
+            "Streak & fluency tracker"
+          ].map((item) => (
+            <li key={item} className="flex items-center gap-2 text-sm text-slate-200">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-violet-500/20 text-violet-200">
+                ✓
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </MotionSection>
 
       {/* ASKBUDDY FEATURE */}
       <MotionSection className="relative section-wrapper pt-6">
         <GradientOrbs />
-        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
-          <div>
-            <div className="badge-gradient">For Students · App Available</div>
-            <h2 className="mt-4 font-display text-4xl font-bold text-white sm:text-5xl">
-              Crack any homework with{" "}
-              <span className="gradient-text">AskBuddy AI</span>
-            </h2>
-            <p className="mt-4 max-w-xl text-base text-slate-300">
-              Snap a question, get a step-by-step explanation, and unlock practice problems that
-              build real understanding — not shortcuts.
-            </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              {[
-                "Step-by-step doubt solving",
-                "Personalised practice sets",
-                "Subject coverage K-12 to college",
-                "Streaks, goals & progress"
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2 text-sm text-slate-200">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-200">
-                    ✓
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/askbuddy" className="btn-primary">
-                Try AskBuddy
-                <span aria-hidden>→</span>
-              </Link>
-              <Link href="/pricing" className="btn-secondary">
-                View Plans
-              </Link>
-            </div>
+        <div className="mb-10 max-w-3xl">
+          <div className="badge-gradient">For Students · App Available</div>
+          <h2 className="mt-4 font-display text-4xl font-bold text-white sm:text-5xl">
+            Meet{" "}
+            <span className="bg-gradient-to-r from-emerald-200 via-cyan-300 to-blue-300 bg-clip-text text-transparent">
+              Eva
+            </span>
+            {" "}— your AI study buddy
+          </h2>
+          <p className="mt-4 text-base text-slate-300">
+            Snap a question, get a step-by-step explanation, and unlock practice problems that
+            build real understanding — not shortcuts.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link href="/askbuddy" className="btn-primary">
+              Try AskBuddy
+              <span aria-hidden>→</span>
+            </Link>
+            <Link href="/pricing" className="btn-secondary">
+              View Plans
+            </Link>
           </div>
-          <MotionDiv delay={0.15}>
-            <AskBuddyMockup />
-          </MotionDiv>
         </div>
+        <AIAssistantHero
+          characterImage="/characters/askbuddy.png"
+          characterAlt="Eva, the AskBuddy AI study assistant"
+          characterName="Eva"
+          characterRole="AskBuddy AI · Study Assistant"
+          accent="emerald"
+          characterSide="left"
+          mockup={<AskBuddyMockup />}
+          floatingCards={[
+            { text: "Step-by-step", icon: "📘", position: "top-right" },
+            { text: "12 doubts solved", icon: "✅", position: "bottom-left" }
+          ]}
+        />
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            "Step-by-step solving",
+            "Personalised practice",
+            "K-12 to college",
+            "Streaks & progress"
+          ].map((item) => (
+            <li key={item} className="flex items-center gap-2 text-sm text-slate-200">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-200">
+                ✓
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </MotionSection>
 
       {/* MOVIXA FEATURE */}
       <MotionSection className="relative section-wrapper pt-6">
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
-          <MotionDiv className="order-2 lg:order-1">
-            <MovixaMockup />
-          </MotionDiv>
-          <div className="order-1 lg:order-2">
-            <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/30 bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-amber-200">
-              <span className="relative inline-flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-300 opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber-300" />
-              </span>
-              Coming Soon
-            </div>
-            <h2 className="mt-4 font-display text-4xl font-bold text-white sm:text-5xl">
-              Create cinematic content with{" "}
-              <span className="bg-gradient-to-r from-amber-200 via-rose-300 to-violet-300 bg-clip-text text-transparent">
-                Movixa AI Studio
-              </span>
-            </h2>
-            <p className="mt-4 max-w-xl text-base text-slate-300">
-              Prompt-to-video generation, on-brand image variations, and a creator-grade timeline.
-              Movixa AI Studio is the creative cockpit for the AI-first content era.
-            </p>
-            <ul className="mt-6 space-y-2 text-sm text-slate-200">
-              {[
-                "Prompt to high-res video",
-                "Brand-aware image variations",
-                "AI voiceover & captions",
-                "Export-ready creator timeline"
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-amber-500/20 text-amber-200">
-                    ✓
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/contact" className="btn-primary">
-                Join Waitlist
-                <span aria-hidden>→</span>
-              </Link>
-              <Link href="/movixa" className="btn-secondary">
-                Preview
-              </Link>
-            </div>
+        <div className="mb-10 max-w-3xl">
+          <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/30 bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-amber-200">
+            <span className="relative inline-flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-300 opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber-300" />
+            </span>
+            Coming Soon
+          </div>
+          <h2 className="mt-4 font-display text-4xl font-bold text-white sm:text-5xl">
+            Meet{" "}
+            <span className="bg-gradient-to-r from-amber-200 via-rose-300 to-violet-300 bg-clip-text text-transparent">
+              Nova
+            </span>
+            {" "}— your AI creative director
+          </h2>
+          <p className="mt-4 text-base text-slate-300">
+            Prompt-to-video generation, on-brand image variations, and a creator-grade timeline.
+            Movixa AI Studio is the creative cockpit for the AI-first content era.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link href="/contact" className="btn-primary">
+              Join Waitlist
+              <span aria-hidden>→</span>
+            </Link>
+            <Link href="/movixa" className="btn-secondary">
+              Preview
+            </Link>
           </div>
         </div>
+        <AIAssistantHero
+          characterImage="/characters/movixa.png"
+          characterAlt="Nova, the Movixa AI Studio creative director"
+          characterName="Nova"
+          characterRole="Movixa AI · Creative Director"
+          accent="amber"
+          characterSide="right"
+          mockup={<MovixaMockup />}
+          floatingCards={[
+            { text: "Generating · 4K", icon: "🎬", position: "top-left" },
+            { text: "Brand-locked", icon: "🎨", position: "bottom-right" }
+          ]}
+        />
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            "Prompt to video",
+            "Brand image variations",
+            "AI voiceover & captions",
+            "Creator-grade timeline"
+          ].map((item) => (
+            <li key={item} className="flex items-center gap-2 text-sm text-slate-200">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-500/20 text-amber-200">
+                ✓
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </MotionSection>
 
       {/* FEATURES */}

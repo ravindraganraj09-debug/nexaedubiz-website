@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AssistantPortrait } from "@/components/AIAssistantHero";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import ReplyPilotMockup from "@/components/mockups/ReplyPilotMockup";
 
@@ -91,7 +92,22 @@ export default function ReplyPilotPage() {
       ctaSubtitle="ReplyPilot AI is live and ready to scale your customer conversations from day one."
       ctaPrimary={{ label: "Try the Live App", href: REPLYPILOT_APP_URL }}
       ctaSecondary={{ label: "Contact Sales", href: "/contact" }}
-      mockup={<ReplyPilotMockup />}
+      mockup={
+        <AssistantPortrait
+          characterImage="/characters/replypilot.png"
+          characterAlt="Aria, the ReplyPilot AI customer assistant"
+          characterName="Aria"
+          characterRole="ReplyPilot AI · Customer Assistant"
+          accent="cyan"
+          floatingCards={[
+            { text: "AI replied · 2.4s", icon: "💬", position: "top-right" },
+            { text: "Lead captured", icon: "🎯", position: "bottom-left" }
+          ]}
+        />
+      }
+      dashboardPreview={<ReplyPilotMockup />}
+      dashboardTitle="ReplyPilot AI dashboard preview"
+      dashboardDescription="Smart inbox, auto replies, lead capture, and analytics — all in one premium workspace."
     />
   );
 }

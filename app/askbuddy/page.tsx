@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AssistantPortrait } from "@/components/AIAssistantHero";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import AskBuddyMockup from "@/components/mockups/AskBuddyMockup";
 
@@ -88,7 +89,22 @@ export default function AskBuddyPage() {
       ctaSubtitle="Available now as a mobile app. Start free and upgrade when you need more."
       ctaPrimary={{ label: "View Plans", href: "/pricing" }}
       ctaSecondary={{ label: "Get the App", href: "/contact" }}
-      mockup={<AskBuddyMockup />}
+      mockup={
+        <AssistantPortrait
+          characterImage="/characters/askbuddy.png"
+          characterAlt="Eva, the AskBuddy AI study assistant"
+          characterName="Eva"
+          characterRole="AskBuddy AI · Study Assistant"
+          accent="emerald"
+          floatingCards={[
+            { text: "Step-by-step", icon: "📘", position: "top-right" },
+            { text: "12 doubts solved", icon: "✅", position: "bottom-left" }
+          ]}
+        />
+      }
+      dashboardPreview={<AskBuddyMockup />}
+      dashboardTitle="AskBuddy AI study dashboard"
+      dashboardDescription="Ask a doubt, get a step-by-step solution, and track your daily learning streak."
     />
   );
 }

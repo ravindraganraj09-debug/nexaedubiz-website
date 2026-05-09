@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import CTASection from "@/components/CTASection";
 import GradientOrbs from "@/components/GradientOrbs";
+import SectionHeader from "@/components/SectionHeader";
 import SmartLink from "@/components/SmartLink";
 
 export type ProductStatus = "Live" | "App Available" | "Coming Soon";
@@ -41,8 +42,14 @@ type ProductPageLayoutProps = {
   ctaSubtitle?: string;
   ctaPrimary?: CTA;
   ctaSecondary?: CTA;
-  /** Optional rich visual mockup rendered in the hero. */
+  /** Optional rich visual rendered in the hero (typically the AI assistant portrait). */
   mockup?: ReactNode;
+  /** Optional dashboard / app preview rendered below the stats as a Live Preview section. */
+  dashboardPreview?: ReactNode;
+  /** Headline above the dashboard preview. Defaults to "Live preview". */
+  dashboardTitle?: string;
+  /** Subline under the dashboard preview heading. */
+  dashboardDescription?: string;
 };
 
 const statusStyles: Record<ProductStatus, string> = {
@@ -68,7 +75,10 @@ export default function ProductPageLayout({
   ctaSubtitle,
   ctaPrimary,
   ctaSecondary,
-  mockup
+  mockup,
+  dashboardPreview,
+  dashboardTitle,
+  dashboardDescription
 }: ProductPageLayoutProps) {
   return (
     <main className="relative overflow-hidden">
@@ -205,6 +215,22 @@ export default function ProductPageLayout({
               </div>
             ))}
           </div>
+        </section>
+      ) : null}
+
+      {dashboardPreview ? (
+        <section className="relative section-wrapper pt-10">
+          <GradientOrbs />
+          <SectionHeader
+            eyebrow="Live preview"
+            title={dashboardTitle ?? `${badge} in action`}
+            description={
+              dashboardDescription ??
+              "A snapshot of the real product UI. Smooth, fast, and built for everyday use."
+            }
+            className="mb-8"
+          />
+          <div className="relative mx-auto max-w-5xl">{dashboardPreview}</div>
         </section>
       ) : null}
 
