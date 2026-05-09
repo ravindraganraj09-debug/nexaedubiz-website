@@ -84,11 +84,16 @@ export default function Footer() {
       <div className="section-wrapper py-14">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
-            <Link href="/" className="flex items-center gap-2 text-lg font-bold text-white">
+            <Link href="/" className="flex items-center gap-2.5 text-lg font-bold text-white">
               <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 via-indigo-500 to-cyan-400 text-sm font-black text-white shadow-glow-cyan">
                 N
               </span>
-              <span className="font-display tracking-tight">NexaEduBiz</span>
+              <span className="flex flex-col leading-none">
+                <span className="font-display tracking-tight">NexaEduBiz</span>
+                <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-200/80">
+                  Intelligent Tools · Real Results
+                </span>
+              </span>
             </Link>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-400">
               Premium AI products for business automation, learning, and creativity. One ecosystem

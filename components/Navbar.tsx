@@ -87,14 +87,19 @@ export default function Navbar() {
       <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="group flex items-center gap-2 text-lg font-bold text-white"
+          className="group flex items-center gap-2.5 text-lg font-bold text-white"
           onClick={() => setIsOpen(false)}
         >
           <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 via-indigo-500 to-cyan-400 text-sm font-black text-white shadow-glow-cyan">
             <span className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-500 via-indigo-500 to-cyan-400 blur-md opacity-50 transition group-hover:opacity-80" />
             <span className="relative">N</span>
           </span>
-          <span className="font-display tracking-tight">NexaEduBiz</span>
+          <span className="flex flex-col leading-none">
+            <span className="font-display tracking-tight">NexaEduBiz</span>
+            <span className="mt-1 hidden text-[9px] font-semibold uppercase tracking-[0.22em] text-cyan-200/80 sm:block">
+              Intelligent Tools · Real Results
+            </span>
+          </span>
         </Link>
 
         <div className="hidden items-center gap-1 text-sm text-slate-300 md:flex">
