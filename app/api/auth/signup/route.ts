@@ -1,4 +1,3 @@
-import { randomUUID } from "crypto";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { createUser, findUserByEmail } from "@/lib/user-store";
@@ -41,12 +40,7 @@ export async function POST(request: Request) {
     }
 
     const passwordHash = await bcrypt.hash(password, 12);
-    await createUser({
-      id: randomUUID(),
-      email,
-      name,
-      passwordHash
-    });
+    await createUser({ email, name, passwordHash });
 
     return NextResponse.json({ message: "Account created successfully." });
   } catch (error) {
