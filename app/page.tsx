@@ -7,6 +7,8 @@ import ProductCard, { ProductButton } from "@/components/ProductCard";
 import SmartLink from "@/components/SmartLink";
 
 const REPLYPILOT_APP_URL = "https://ai-auto-reply-tool.vercel.app";
+const TALKENTIA_PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.rganraj.aispeakeasy&pcampaignid=web_share";
 
 const products: {
   icon: string;
@@ -41,7 +43,7 @@ const products: {
     benefits: ["Voice-based speaking practice", "Grammar correction", "Topic tutor sessions"],
     status: "App Available",
     buttons: [
-      { label: "Download App", href: "/talkentia" },
+      { label: "Download App", href: TALKENTIA_PLAY_STORE_URL },
       { label: "View Plans", href: "/pricing", variant: "secondary" },
       { label: "Learn More", href: "/talkentia", variant: "secondary" }
     ]
@@ -271,12 +273,14 @@ export default function HomePage() {
           {[
             {
               name: "Talkentia AI",
-              href: "/talkentia",
+              playHref: TALKENTIA_PLAY_STORE_URL,
+              webHref: "/talkentia",
               description: "Practice speaking English with your AI tutor anywhere."
             },
             {
               name: "AskBuddy AI",
-              href: "/askbuddy",
+              playHref: "/askbuddy",
+              webHref: "/askbuddy",
               description: "Get instant homework help and learning support on mobile."
             }
           ].map((app) => (
@@ -284,10 +288,10 @@ export default function HomePage() {
               <h3 className="text-xl font-semibold text-white">{app.name}</h3>
               <p className="mt-2 text-sm text-slate-300">{app.description}</p>
               <div className="mt-4 flex flex-wrap gap-3">
-                <Link href={app.href} className="btn-primary">
+                <SmartLink href={app.playHref} className="btn-primary">
                   Download on Play Store
-                </Link>
-                <Link href={app.href} className="btn-secondary">
+                </SmartLink>
+                <Link href={app.webHref} className="btn-secondary">
                   Coming Soon on Web
                 </Link>
               </div>

@@ -29,6 +29,8 @@ type ProductPageLayoutProps = {
   primaryCta: CTA;
   secondaryCta?: CTA;
   liveAppUrl?: string;
+  /** Google Play (or other store) — shows a compact top bar with SmartLink (new tab). */
+  playStoreUrl?: string;
   heroHighlights?: string[];
   stats?: Stat[];
   features: Feature[];
@@ -53,6 +55,7 @@ export default function ProductPageLayout({
   primaryCta,
   secondaryCta,
   liveAppUrl,
+  playStoreUrl,
   heroHighlights = [],
   stats = [],
   features,
@@ -82,6 +85,30 @@ export default function ProductPageLayout({
               className="inline-flex items-center gap-1 rounded-lg bg-white/10 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-white/20"
             >
               Open Live App
+              <span aria-hidden>↗</span>
+            </SmartLink>
+          </div>
+        </div>
+      ) : null}
+
+      {playStoreUrl ? (
+        <div className="border-b border-cyan-400/20 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-indigo-500/10">
+          <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-3 px-4 py-3 sm:flex-row sm:items-center sm:px-6 lg:px-8">
+            <div className="flex items-center gap-3">
+              <span className="relative inline-flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan-400" />
+              </span>
+              <p className="text-sm text-slate-200">
+                <span className="font-semibold text-white">{badge}</span> is on Google Play — open
+                the listing in a new tab.
+              </p>
+            </div>
+            <SmartLink
+              href={playStoreUrl}
+              className="inline-flex items-center gap-1 rounded-lg bg-white/10 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-white/20"
+            >
+              Open Play Store
               <span aria-hidden>↗</span>
             </SmartLink>
           </div>

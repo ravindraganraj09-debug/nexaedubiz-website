@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import ProductPageLayout from "@/components/ProductPageLayout";
 
+const TALKENTIA_PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.rganraj.aispeakeasy&pcampaignid=web_share";
+
 export const metadata: Metadata = {
   title: "Talkentia AI - Speak English with an AI Tutor | NexaEduBiz",
   description:
@@ -12,9 +15,10 @@ export default function TalkentiaPage() {
     <ProductPageLayout
       badge="Talkentia AI"
       status="App Available"
+      playStoreUrl={TALKENTIA_PLAY_STORE_URL}
       title="Speak English Confidently with Your AI Tutor"
       description="Talkentia AI is a voice-first learning app for daily speaking practice, real-time grammar correction, and topic-based conversations with a patient AI tutor that fits in your pocket."
-      primaryCta={{ label: "Download App", href: "/contact" }}
+      primaryCta={{ label: "Download on Google Play", href: TALKENTIA_PLAY_STORE_URL }}
       secondaryCta={{ label: "View Plans", href: "/pricing" }}
       heroHighlights={[
         "Voice conversation practice",
@@ -84,9 +88,9 @@ export default function TalkentiaPage() {
         }
       ]}
       ctaTitle="Start Speaking English with Confidence"
-      ctaSubtitle="Talkentia AI is available as a mobile-first app. Pick a plan or download today."
-      ctaPrimary={{ label: "View Plans", href: "/pricing" }}
-      ctaSecondary={{ label: "Get the App", href: "/contact" }}
+      ctaSubtitle="Talkentia AI is available on Google Play. Install the app or pick a plan on the web."
+      ctaPrimary={{ label: "Open on Google Play", href: TALKENTIA_PLAY_STORE_URL }}
+      ctaSecondary={{ label: "View Plans", href: "/pricing" }}
     />
   );
 }
