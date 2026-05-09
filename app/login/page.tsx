@@ -64,7 +64,7 @@ export default function LoginPage() {
 
           <p className="text-center text-sm text-slate-300">
             New to NexaEduBiz?{" "}
-            <Link href="/contact" className="font-semibold text-cyan-300 hover:text-cyan-200">
+            <Link href="/signup" className="font-semibold text-cyan-300 hover:text-cyan-200">
               Create an account
             </Link>
           </p>

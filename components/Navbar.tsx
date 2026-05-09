@@ -116,8 +116,8 @@ export default function Navbar() {
           <Link href="/login" className="btn-secondary">
             Login
           </Link>
-          <Link href="/pricing" className="btn-primary">
-            Get Started
+          <Link href="/signup" className="btn-primary">
+            Sign up
           </Link>
         </div>
 
@@ -194,8 +194,8 @@ export default function Navbar() {
               <Link href="/login" className="btn-secondary w-full">
                 Login
               </Link>
-              <Link href="/pricing" className="btn-primary w-full">
-                Get Started
+              <Link href="/signup" className="btn-primary w-full">
+                Sign up
               </Link>
             </div>
           </div>
