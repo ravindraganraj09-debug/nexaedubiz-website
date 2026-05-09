@@ -13,7 +13,7 @@ type SubmitState = {
 };
 
 const inputClassName =
-  "mt-2 w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none ring-cyan-300/40 transition focus:ring";
+  "mt-2 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-300/40 focus:bg-white/[0.06] focus:ring-2 focus:ring-cyan-300/20";
 
 export default function ContactForm({ className = "" }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -67,7 +67,7 @@ export default function ContactForm({ className = "" }: ContactFormProps) {
 
   return (
     <form className={className} onSubmit={handleSubmit}>
-      <div className="md:col-span-2 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3">
+      <div className="md:col-span-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3">
         <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
           Reach us directly
         </p>
@@ -77,17 +77,29 @@ export default function ContactForm({ className = "" }: ContactFormProps) {
       </div>
       <label className="text-sm text-slate-200">
         Name
-        <input type="text" name="name" required className={inputClassName} />
+        <input
+          type="text"
+          name="name"
+          required
+          placeholder="Your full name"
+          className={inputClassName}
+        />
       </label>
       <label className="text-sm text-slate-200">
         Email
-        <input type="email" name="email" required className={inputClassName} />
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="you@company.com"
+          className={inputClassName}
+        />
       </label>
       <label className="text-sm text-slate-200 md:col-span-2">
         Product Interest
         <select
           name="product"
-          className="mt-2 w-full rounded-lg border border-white/15 bg-slate-900 px-3 py-2 text-sm text-white outline-none ring-cyan-300/40 transition focus:ring"
+          className="mt-2 w-full rounded-xl border border-white/10 bg-slate-900 px-4 py-2.5 text-sm text-white outline-none transition focus:border-cyan-300/40 focus:ring-2 focus:ring-cyan-300/20"
         >
           <option>ReplyPilot AI</option>
           <option>Talkentia AI</option>
@@ -98,17 +110,26 @@ export default function ContactForm({ className = "" }: ContactFormProps) {
       </label>
       <label className="text-sm text-slate-200 md:col-span-2">
         Message
-        <textarea name="message" rows={5} required className={inputClassName} />
+        <textarea
+          name="message"
+          rows={5}
+          required
+          placeholder="Tell us what you're building or what you need…"
+          className={inputClassName}
+        />
       </label>
       <div className="md:col-span-2">
         <button type="submit" className="btn-primary" disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Submit"}
+          {isSubmitting ? "Sending…" : "Send Message"}
+          <span aria-hidden>→</span>
         </button>
       </div>
       {submitState.type !== "idle" ? (
         <p
-          className={`md:col-span-2 text-sm ${
-            submitState.type === "success" ? "text-emerald-300" : "text-rose-300"
+          className={`md:col-span-2 rounded-xl border px-4 py-2.5 text-sm ${
+            submitState.type === "success"
+              ? "border-emerald-400/30 bg-emerald-500/10 text-emerald-200"
+              : "border-rose-400/30 bg-rose-500/10 text-rose-200"
           }`}
         >
           {submitState.message}

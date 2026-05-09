@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ProductPageLayout from "@/components/ProductPageLayout";
+import ReplyPilotMockup from "@/components/mockups/ReplyPilotMockup";
 
 const REPLYPILOT_APP_URL = "https://ai-auto-reply-tool.vercel.app";
 
@@ -90,6 +91,7 @@ export default function ReplyPilotPage() {
       ctaSubtitle="ReplyPilot AI is live and ready to scale your customer conversations from day one."
       ctaPrimary={{ label: "Try the Live App", href: REPLYPILOT_APP_URL }}
       ctaSecondary={{ label: "Contact Sales", href: "/contact" }}
+      mockup={<ReplyPilotMockup />}
     />
   );
 }

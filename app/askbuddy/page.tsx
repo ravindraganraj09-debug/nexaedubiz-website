@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ProductPageLayout from "@/components/ProductPageLayout";
+import AskBuddyMockup from "@/components/mockups/AskBuddyMockup";
 
 export const metadata: Metadata = {
   title: "AskBuddy AI - AI Homework Helper for Students | NexaEduBiz",
@@ -87,6 +88,7 @@ export default function AskBuddyPage() {
       ctaSubtitle="Available now as a mobile app. Start free and upgrade when you need more."
       ctaPrimary={{ label: "View Plans", href: "/pricing" }}
       ctaSecondary={{ label: "Get the App", href: "/contact" }}
+      mockup={<AskBuddyMockup />}
     />
   );
 }

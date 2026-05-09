@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ProductPageLayout from "@/components/ProductPageLayout";
+import MovixaMockup from "@/components/mockups/MovixaMockup";
 
 export const metadata: Metadata = {
   title: "Movixa AI Studio - AI Video, Image & Content Generation | NexaEduBiz",
@@ -87,6 +88,7 @@ export default function MovixaPage() {
       ctaSubtitle="We're rolling out early access soon. Join the waitlist and we'll notify you when it goes live."
       ctaPrimary={{ label: "Join Waitlist", href: "/contact" }}
       ctaSecondary={{ label: "View Other Products", href: "/#products" }}
+      mockup={<MovixaMockup />}
     />
   );
 }

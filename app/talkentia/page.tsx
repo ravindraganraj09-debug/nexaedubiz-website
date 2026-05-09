@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ProductPageLayout from "@/components/ProductPageLayout";
+import TalkentiaMockup from "@/components/mockups/TalkentiaMockup";
 
 const TALKENTIA_PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.rganraj.aispeakeasy&pcampaignid=web_share";
@@ -91,6 +92,7 @@ export default function TalkentiaPage() {
       ctaSubtitle="Talkentia AI is available on Google Play. Install the app or pick a plan on the web."
       ctaPrimary={{ label: "Open on Google Play", href: TALKENTIA_PLAY_STORE_URL }}
       ctaSecondary={{ label: "View Plans", href: "/pricing" }}
+      mockup={<TalkentiaMockup />}
     />
   );
 }
