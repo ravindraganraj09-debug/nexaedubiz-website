@@ -1,4 +1,4 @@
-import Link from "next/link";
+import SmartLink from "@/components/SmartLink";
 
 type CTASectionProps = {
   title: string;
@@ -23,13 +23,13 @@ export default function CTASection({
         <h2 className="text-2xl font-bold text-white md:text-3xl">{title}</h2>
         <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-300 md:text-base">{subtitle}</p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-          <Link href={primaryHref} className="btn-primary">
+          <SmartLink href={primaryHref} className="btn-primary">
             {primaryLabel}
-          </Link>
+          </SmartLink>
           {secondaryLabel && secondaryHref ? (
-            <Link href={secondaryHref} className="btn-secondary">
+            <SmartLink href={secondaryHref} className="btn-secondary">
               {secondaryLabel}
-            </Link>
+            </SmartLink>
           ) : null}
         </div>
       </div>

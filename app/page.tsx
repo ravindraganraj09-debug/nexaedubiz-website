@@ -1,8 +1,12 @@
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
+import ContactForm from "@/components/ContactForm";
 import FAQItem from "@/components/FAQItem";
 import PricingCard from "@/components/PricingCard";
 import ProductCard, { ProductButton } from "@/components/ProductCard";
+import SmartLink from "@/components/SmartLink";
+
+const REPLYPILOT_APP_URL = "https://ai-auto-reply-tool.vercel.app";
 
 const products: {
   icon: string;
@@ -24,7 +28,7 @@ const products: {
     ],
     status: "Live",
     buttons: [
-      { label: "Try ReplyPilot", href: "/replypilot" },
+      { label: "Try ReplyPilot", href: REPLYPILOT_APP_URL },
       { label: "Buy Plan", href: "/pricing", variant: "secondary" },
       { label: "Learn More", href: "/replypilot", variant: "secondary" }
     ]
@@ -137,29 +141,6 @@ const faqs = [
 export default function HomePage() {
   return (
     <main className="relative overflow-hidden">
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-lg">
-        <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <Link href="/" className="text-lg font-bold text-white">
-            NexaEduBiz
-          </Link>
-          <div className="hidden items-center gap-6 text-sm text-slate-200 md:flex">
-            <Link href="#home">Home</Link>
-            <Link href="#products">Products</Link>
-            <Link href="#pricing">Pricing</Link>
-            <Link href="#about">About</Link>
-            <Link href="/contact">Contact</Link>
-          </div>
-          <div className="flex items-center gap-2">
-            <Link href="/login" className="btn-secondary hidden sm:inline-flex">
-              Login
-            </Link>
-            <Link href="/pricing" className="btn-primary">
-              Get Started
-            </Link>
-          </div>
-        </nav>
-      </header>
-
       <section id="home" className="section-wrapper pb-10 pt-20 md:pt-24">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <div>
@@ -229,11 +210,11 @@ export default function HomePage() {
               and smarter lead handling with minimal manual effort.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/replypilot" className="btn-primary">
+              <SmartLink href={REPLYPILOT_APP_URL} className="btn-primary">
                 Start Free
-              </Link>
+              </SmartLink>
               <Link href="/replypilot" className="btn-secondary">
-                Watch Demo
+                Learn More
               </Link>
             </div>
           </div>
@@ -387,53 +368,9 @@ export default function HomePage() {
 
       <section id="contact" className="section-wrapper pt-6">
         <h2 className="text-3xl font-bold text-white">Contact Us</h2>
-        <form className="glass-card mt-6 grid gap-4 p-6 md:grid-cols-2" action="/contact">
-          <label className="text-sm text-slate-200">
-            Name
-            <input
-              type="text"
-              name="name"
-              required
-              className="mt-2 w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none ring-cyan-300/40 transition focus:ring"
-            />
-          </label>
-          <label className="text-sm text-slate-200">
-            Email
-            <input
-              type="email"
-              name="email"
-              required
-              className="mt-2 w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none ring-cyan-300/40 transition focus:ring"
-            />
-          </label>
-          <label className="text-sm text-slate-200 md:col-span-2">
-            Product Interest
-            <select
-              name="product"
-              className="mt-2 w-full rounded-lg border border-white/15 bg-slate-900 px-3 py-2 text-sm text-white outline-none ring-cyan-300/40 transition focus:ring"
-            >
-              <option>ReplyPilot AI</option>
-              <option>Talkentia AI</option>
-              <option>AskBuddy AI</option>
-              <option>Movixa AI Studio</option>
-              <option>Other / Future Products</option>
-            </select>
-          </label>
-          <label className="text-sm text-slate-200 md:col-span-2">
-            Message
-            <textarea
-              name="message"
-              rows={5}
-              required
-              className="mt-2 w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none ring-cyan-300/40 transition focus:ring"
-            />
-          </label>
-          <div className="md:col-span-2">
-            <button type="submit" className="btn-primary">
-              Submit
-            </button>
-          </div>
-        </form>
+        <div className="glass-card mt-6 p-6">
+          <ContactForm className="grid gap-4 md:grid-cols-2" />
+        </div>
       </section>
 
       <CTASection
@@ -444,70 +381,6 @@ export default function HomePage() {
         secondaryLabel="Contact Sales"
         secondaryHref="/contact"
       />
-
-      <footer className="border-t border-white/10 bg-slate-950/70">
-        <div className="section-wrapper py-10">
-          <div className="grid gap-8 md:grid-cols-4">
-            <div>
-              <p className="text-lg font-bold text-white">NexaEduBiz</p>
-              <p className="mt-2 text-sm text-slate-300">
-                AI tools for business, education, and creativity.
-              </p>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-cyan-200">Products</p>
-              <ul className="mt-3 space-y-2 text-sm text-slate-300">
-                <li>
-                  <Link href="/replypilot">ReplyPilot AI</Link>
-                </li>
-                <li>
-                  <Link href="/talkentia">Talkentia AI</Link>
-                </li>
-                <li>
-                  <Link href="/askbuddy">AskBuddy AI</Link>
-                </li>
-                <li>
-                  <Link href="/movixa">Movixa AI Studio</Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-cyan-200">Company</p>
-              <ul className="mt-3 space-y-2 text-sm text-slate-300">
-                <li>
-                  <Link href="#about">About</Link>
-                </li>
-                <li>
-                  <Link href="/pricing">Pricing</Link>
-                </li>
-                <li>
-                  <Link href="/contact">Contact</Link>
-                </li>
-                <li>
-                  <Link href="/contact">Support</Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-cyan-200">Legal</p>
-              <ul className="mt-3 space-y-2 text-sm text-slate-300">
-                <li>
-                  <Link href="/privacy-policy">Privacy Policy</Link>
-                </li>
-                <li>
-                  <Link href="/terms-and-conditions">Terms &amp; Conditions</Link>
-                </li>
-                <li>
-                  <Link href="/refund-policy">Refund Policy</Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <p className="mt-10 text-xs text-slate-400">
-            Copyright {new Date().getFullYear()} NexaEduBiz. All rights reserved.
-          </p>
-        </div>
-      </footer>
     </main>
   );
 }

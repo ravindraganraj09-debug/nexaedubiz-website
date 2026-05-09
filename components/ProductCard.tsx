@@ -1,4 +1,4 @@
-import Link from "next/link";
+import SmartLink from "@/components/SmartLink";
 
 export type ProductButton = {
   label: string;
@@ -53,13 +53,13 @@ export default function ProductCard({
       </ul>
       <div className="mt-auto flex flex-wrap gap-2">
         {buttons.map((button) => (
-          <Link
+          <SmartLink
             key={`${name}-${button.label}`}
             href={button.href}
             className={button.variant === "secondary" ? "btn-secondary" : "btn-primary"}
           >
             {button.label}
-          </Link>
+          </SmartLink>
         ))}
       </div>
     </article>
